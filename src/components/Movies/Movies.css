@@ -3,4 +3,6 @@
   flex-wrap: wrap;
   justify-content: flex-start; 
   gap: 20px; 
+  background-color: black;
+  color: white;
 }
