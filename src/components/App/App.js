@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import Movies from '../Movies/Movies';
 import GetMovieId from '../MovieDetails/MovieDetails';
+import Header from '../Header/Header.js';
 
 function App() {
     const [movies, setMovies] = useState([]);
@@ -19,6 +20,7 @@ function App() {
 
     return (
         <main>
+            <Header setSelectedMovieId={setSelectedMovieId} selectedMovieId={selectedMovieId}/>
             {selectedMovieId ? (
                 <GetMovieId movies={movies} selectedMovieId={selectedMovieId} />
             ) : (
