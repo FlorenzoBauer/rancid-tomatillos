@@ -1,4 +1,5 @@
 import './MovieDetails.css'
+import Header from '../Header/Header.js'
 
 const GetMovieId = ({ movies, selectedMovieId }) => {
   const movie = movies.find(movie => movie.id === selectedMovieId);
