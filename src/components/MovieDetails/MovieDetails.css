@@ -1,7 +1,7 @@
 .individual-movie {
-  background-color: hsla(0, 0%, 93%, 0.5); /* Adjusted opacity for more transparency */
-  backdrop-filter: blur(5px); /* Blur effect */
-  color: #ffffff; /* Text color set to white */
+  background-color: hsla(0, 0%, 2%, 0.328); 
+  backdrop-filter: blur(5px);
+  color: #ffffff; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,14 +14,10 @@
   max-width: 80%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  /* New properties for consistent size */
-  width: 600px; /* Set a fixed width */
-  height: 400px; /* Set a fixed height */
-  overflow: auto; /* Adds scrollbars if content overflows */
-}
-
-.individual-movie p strong {
-  color: #E50914; /* Example color */
+  
+  width: 600px; 
+  height: 400px; 
+  overflow: auto; 
 }
 
 .movie-details-container {
