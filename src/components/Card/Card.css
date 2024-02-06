@@ -5,13 +5,14 @@
   padding: 10px;
   width: 150px;
   margin: 40px;
-  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-  /* Include transform in the transition */
+  transition: box-shadow 0.3s ease-in-out, transform 0.5s ease-in-out;
+  border: none;
+  border-radius: 10px;
 }
 
 .card:hover {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-  transform: scale(1.2);
+  box-shadow: 0 0 40px 12px rgba(255, 255, 255, 0.8);
+  transform: scale(1.15);
 }
 
 .card img {
