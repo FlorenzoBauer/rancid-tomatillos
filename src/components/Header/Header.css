@@ -1,39 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel:400,700&display=swap');
-/* Add this to your global CSS or at the top of your Header.css */
+
 body, h1 {
     margin: 0;
   }
   
   .title {
     display: flex;
-    justify-content: center; /* Center the items horizontally */
-    align-items: center; /* Align items vertically in the center */
-    position: relative; /* Allows absolute positioning of children */
+    justify-content: center; 
+    align-items: center;
+    position: relative;
     background-color: black;
     color: white;
     text-align: center;
     font-family: 'Cinzel', sans-serif;
     font-size: 2rem;
-    padding: 0 20px; /* Add some padding on the sides */
+    padding: 30px 30px;
   }
-  
-  
   
   .homeButton {
     position: absolute;
-    right: 20px; /* Position the button 20px from the right edge */
-    top: 50%; /* Align the button vertically in the center */
-    transform: translateY(-50%); /* Center the button vertically */
-    background-color: #2a2828;
-    border-color: white;
-    color: rgb(239, 243, 6);
+    right: 20px;
+    background-color: #444;
+    color: white;
+    border: 2px solid #666;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px; /* Adjusted font size */
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 8px; /* Adjusted border-radius for design consistency */
-    padding: 10px 20px; /* Adjusted padding */
-    margin: 4px 2px; /* Adjusted margin */
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .homeButton:hover {
+    background-color: #666; 
+    color: #ffffff;
   }
   
