@@ -42,7 +42,7 @@ const GetMovieId = ({ selectedMovieId }) => {
       <div className="individual-movie">
         <h2>{movie.title}</h2>
         <p>
-          <strong>Genres:</strong> {movie.genres.join(', ')}
+        <FontAwesomeIcon icon={faFilm} /> <strong>Genres:</strong> {movie.genres.join(', ')}
         </p>
         <p>
           <FontAwesomeIcon icon={faClock} /> <strong>Run Time:</strong> {movie.runtime} minutes
