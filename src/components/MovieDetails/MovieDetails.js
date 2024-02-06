@@ -13,9 +13,9 @@ const GetMovieId = ({ movies, selectedMovieId }) => {
       </div>
       <div className="individual-movie">
         <h2>{movie.title}</h2>
-        <p>{movie.overview}</p>
-        <p>{movie.release_date}</p>
-        <p>{movie.average_rating}</p>
+        <p><strong>Overview:</strong> {movie.overview}</p>
+        <p><strong>Release Date:</strong> {movie.release_date}</p>
+        <p><strong>Average Rating:</strong> {movie.average_rating}</p>
       </div>
     </div>
   );

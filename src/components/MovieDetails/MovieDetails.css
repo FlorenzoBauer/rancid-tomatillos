@@ -1,35 +1,49 @@
-.individual-movie{
-  background-color: hsla(0, 0%, 93%, 0.2);
-    color: rgba(16, 17, 16, 0.775);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 20px;
+.individual-movie {
+  background-color: hsla(0, 0%, 93%, 0.5); /* Adjusted opacity for more transparency */
+  backdrop-filter: blur(5px); /* Blur effect */
+  color: #ffffff; /* Text color set to white */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
+  max-width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* New properties for consistent size */
+  width: 600px; /* Set a fixed width */
+  height: 400px; /* Set a fixed height */
+  overflow: auto; /* Adds scrollbars if content overflows */
 }
+
+.individual-movie p strong {
+  color: #E50914; /* Example color */
+}
+
 .movie-details-container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
   padding: 20px;
 }
-  
-  .backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
 
-  .backdrop img {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-  }
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.backdrop img {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
