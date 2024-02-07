@@ -1,5 +1,5 @@
+import './Movies.css';
 import Card from '../Card/Card';
-
 const Movies = ({ movies, handleCardClick, error }) => {
     if (error) {
         return <h1>Error: {error}</h1>;
