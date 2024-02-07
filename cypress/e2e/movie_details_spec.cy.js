@@ -25,3 +25,26 @@ describe('All movies view', () => {
     cy.get('div.individual-movie').contains('135 minutes')
   });
 });
+describe('Movie details view sadPath', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000');
+    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
+      statusCode:   200,
+      body: allMoviesData,
+    });
+   
+    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495", {
+      statusCode:   400,
+    });
+   
+    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495/videos", {
+      statusCode:   400,
+    });
+  
+  })
+  it('should display an error message when a user clicks a movie card', () => {
+    cy.get('[data-id="724495"]').click();
+    cy.contains('h1', 'Error Loading...')
+  });
+
+})
