@@ -1,18 +1,19 @@
 import './MovieDetails.css';
 import { useState, useEffect } from 'react';
-import Header from '../Header/Header.js';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCalendarAlt, faStar, faFilm } from '@fortawesome/free-solid-svg-icons';
 
-const GetMovieId = ({ selectedMovieId }) => {
+const GetMovieId = () => {
+  const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const movieUrl = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${selectedMovieId}`;
-        const videosUrl = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${selectedMovieId}/videos`;
+        const movieUrl = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`;
+        const videosUrl = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`;
 
         const [movieResponse, videosResponse] = await Promise.all([
           fetch(movieUrl),
@@ -30,7 +31,7 @@ const GetMovieId = ({ selectedMovieId }) => {
     };
 
     fetchData();
-  }, [selectedMovieId]);
+  }, [movieId]);
 
 
   if (!movie) return (<h1>Error Loading...</h1>);
@@ -42,13 +43,13 @@ const GetMovieId = ({ selectedMovieId }) => {
       <div className="individual-movie">
         <h2>{movie.title}</h2>
         <p>
-        <FontAwesomeIcon icon={faFilm} /> <strong>Genres:</strong> {movie.genres.join(', ')}
+          <FontAwesomeIcon icon={faFilm} /> <strong>Genres:</strong> {movie.genres.join(', ')}
         </p>
         <p>
           <FontAwesomeIcon icon={faClock} /> <strong>Run Time:</strong> {movie.runtime} minutes
         </p>
         <p>
-          <FontAwesomeIcon icon={faCalendarAlt} /> <strong>Release Year:</strong> {new Date(movie.release_date).getFullYear()}
+          <FontAwesomeIcon icon={faCalendarAlt} /> <strong>Release Year:</strong> {movie.release_date.slice(0, 4)}
         </p>
         <p>
           <FontAwesomeIcon icon={faStar} /> <strong>Average Rating:</strong> {movie.average_rating}
@@ -58,7 +59,7 @@ const GetMovieId = ({ selectedMovieId }) => {
         </p>
         <p><strong>Videos:</strong> </p>
         <div className="movie-videos">
-          {videos.map(video => (
+          {videos && videos.length > 0 && videos.map(video => (
             <div key={video.id}>
               <h3>{video.name}</h3>
               <iframe
