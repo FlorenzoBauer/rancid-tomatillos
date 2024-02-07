@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Movies from '../Movies/Movies';
-import GetMovieId from '../MovieDetails/MovieDetails';
+import MovieDetails from '../MovieDetails/MovieDetails';
 import Header from '../Header/Header.js';
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
             <Header onReset={() => {}} />
             <Routes>
                 <Route path="/" element={<Movies movies={movies} handleCardClick={handleCardClick} error={error} />} />
-                <Route path="/:movieId" element={<GetMovieId />} />
+                <Route path="/:movieId" element={<MovieDetails />} />
             </Routes>
         </main>
     );

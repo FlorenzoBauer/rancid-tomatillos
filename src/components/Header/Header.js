@@ -1,5 +1,6 @@
 import './Header.css';
 import { useNavigate, useMatch } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 const Header = ({ onReset }) => {
     const navigate = useNavigate();
@@ -19,3 +20,8 @@ const Header = ({ onReset }) => {
 }
 
 export default Header;
+
+
+Header.propTypes = {
+    onReset: PropTypes.func.isRequired,
+  };
