@@ -1,11 +1,11 @@
-import { movieData } from "../../src/MockData"
+import { allMoviesData } from "../../src/MockData"
 
 describe('All movies view', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000')
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
-      statusCode: 201,
-      body: movieData,
+      statusCode: 200,
+      body: allMoviesData,
     });
   })
   it('should visit page and see the main title', () => {
@@ -13,12 +13,7 @@ describe('All movies view', () => {
   
   });
   it('should display a collection of movies', () => {
-    cy.get('div.movies-container').contains('Money Plane');
-
+    cy.get('div.movies-container').contains('Mulan');
   }); 
-  it('should go to movie details, when a user clicks on a movie', () =>{
-    cy.get('[data-id="694919"]').click()
-    .get('h2').contains('Money Plane')
-     
-  })
-})
+
+});

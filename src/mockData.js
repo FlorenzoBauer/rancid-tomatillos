@@ -1,5 +1,13 @@
-export const movieData = {
+export const allMoviesData = {
   "movies": [
+    {
+      "id": 724495,
+      "poster_path": "https://image.tmdb.org/t/p/original//438QXt1E3WJWb3PqNniK0tAE5c1.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg",
+      "title": "The Woman King",
+      "average_rating": 4,
+      "release_date": "2022-09-15"
+    },
     {
       "id": 694919,
       "poster_path": "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
@@ -322,3 +330,37 @@ export const movieData = {
     }
   ]
 };
+
+export const individualMovieData = {
+    "movie": {
+    "id": 724495,
+    "title": "The Woman King",
+    "poster_path": "https://image.tmdb.org/t/p/original//438QXt1E3WJWb3PqNniK0tAE5c1.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg",
+    "release_date": "2022-09-15",
+    "overview": "The story of the Agojie, the all-female unit of warriors who protected the African Kingdom of Dahomey in the 1800s with skills and a fierceness unlike anything the world has ever seen, and General Nanisca as she trains the next generation of recruits and readies them for battle against an enemy determined to destroy their way of life.",
+    "genres": ["Action", "Drama", "History"],
+    "budget": 50000000,
+    "revenue": 91000000,
+    "runtime": 135,
+    "tagline": "Her reign begins.",
+    "average_rating": 4
+  }
+}
+
+export const individualMovieVideosData = [
+    {
+      "id":19,
+      "movie_id":724495,
+      "key":"XGzVWlvgBdA",
+      "site":"YouTube",
+      "type":"Featurette"},
+      {
+        "id":20,
+        "movie_id":724495,
+        "key":"IQVhSFMnIyQ",
+        "site":"YouTube",
+        "type":"Featurette"
+      }
+    ]
+
