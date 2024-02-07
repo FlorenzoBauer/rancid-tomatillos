@@ -17,3 +17,17 @@ describe('All movies view', () => {
   }); 
 
 });
+
+describe('All movies view sadPath', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:3000')
+    
+  })
+  it('should visit page and fail the api call', () => {
+    cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies", {
+      statusCode: 400,
+    });
+    cy.contains('h1', 'Error: Error fetching data from the API')
+  });
+
+});
