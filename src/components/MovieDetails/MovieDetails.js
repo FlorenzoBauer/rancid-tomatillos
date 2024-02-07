@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCalendarAlt, faStar, faFilm } from '@fortawesome/free-solid-svg-icons';
 
-const GetMovieId = () => {
+
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [videos, setVideos] = useState([]);
@@ -78,4 +79,4 @@ const GetMovieId = () => {
   );
 };
 
-export default GetMovieId;
+export default MovieDetails;

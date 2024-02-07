@@ -1,5 +1,7 @@
 import './Movies.css';
 import Card from '../Card/Card';
+import { PropTypes } from 'prop-types';
+
 const Movies = ({ movies, handleCardClick, error }) => {
     if (error) {
         return <h1>Error: {error}</h1>;
@@ -21,3 +23,9 @@ const Movies = ({ movies, handleCardClick, error }) => {
 };
 
 export default Movies;
+
+Movies.propTypes = {
+    movies: PropTypes.array.isRequired,
+    handleCardClick: PropTypes.func.isRequired,
+  };
+  

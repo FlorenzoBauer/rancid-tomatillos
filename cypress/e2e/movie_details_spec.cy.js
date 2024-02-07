@@ -25,6 +25,7 @@ describe('All movies view', () => {
     cy.get('div.individual-movie').contains('135 minutes')
   });
 });
+
 describe('Movie details view sadPath', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
