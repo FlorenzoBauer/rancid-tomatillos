@@ -3,6 +3,7 @@
 body, h1 {
     margin: 0;
   }
+
   
   .title {
     display: flex;
@@ -39,3 +40,34 @@ body, h1 {
     color: #ffffff;
   }
   
+  .rating-filters {
+    display: flex;
+    justify-content: space-between;
+    width:  100%;
+    max-width:  300px;
+    margin-top:  10px;
+  }
+  
+  .filter-button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius:  5px;
+    padding:  5px  10px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color  0.3s ease;
+  }
+  
+  .filter-button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .active{
+    background-color: green;
+    color:black;
+    border: none;
+    border-radius:  px;
+    padding:  5px  10px;
+    cursor: pointer;
+    outline: none;
+  }

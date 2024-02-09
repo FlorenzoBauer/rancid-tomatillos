@@ -1,27 +1,47 @@
 import './Header.css';
-import { useNavigate, useMatch } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Header = ({ onReset }) => {
-    const navigate = useNavigate();
-    const isMovieDetailsPage = useMatch("/:movieId");
-
+const Header = ({ handleFilterChange, activeFilters }) => {
     return (
         <header className="title">
             <h1>Rancid Tomatillos</h1>
-            {isMovieDetailsPage && (
-                <button className="homeButton" onClick={() => {
-                    navigate('/');
-                    onReset();
-                }}>Back to Movies</button>
-            )}
+            <div className="rating-filters">
+                <NavLink
+                    to="#"
+                    className="filter-button"
+                    activeClassName="active"
+                    onClick={() => handleFilterChange('low')}
+                    isActive={() => activeFilters.low}
+                >
+                    Low Rated
+                </NavLink>
+                <NavLink
+                    to="#"
+                    className="filter-button"
+                    activeClassName="active"
+                    onClick={() => handleFilterChange('average')}
+                    isActive={() => activeFilters.average}
+                >
+                    Average Rated
+                </NavLink>
+                <NavLink
+                    to="#"
+                    className="filter-button"
+                    activeClassName="active"
+                    onClick={() => handleFilterChange('high')}
+                    isActive={() => activeFilters.high}
+                >
+                    High Rated
+                </NavLink>
+            </div>
         </header>
     );
 }
 
-export default Header;
-
-
 Header.propTypes = {
-    onReset: PropTypes.func.isRequired,
-  };
+    handleFilterChange: PropTypes.func.isRequired,
+    activeFilters: PropTypes.object.isRequired,
+};
+
+export default Header;

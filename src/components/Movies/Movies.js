@@ -1,13 +1,12 @@
+import React, { useState, useEffect } from 'react';
 import './Movies.css';
 import Card from '../Card/Card';
 import { PropTypes } from 'prop-types';
 
 const Movies = ({ movies, handleCardClick, error }) => {
-    if (error) {
+  
+    if (error || !movies) {
         return <h1>Error: {error}</h1>;
-    }
-    if (!movies || movies.length === 0) {
-        return <h1>No movies available</h1>;
     }
     return (
         <div className="movies-container">
@@ -25,7 +24,7 @@ const Movies = ({ movies, handleCardClick, error }) => {
 export default Movies;
 
 Movies.propTypes = {
-    movies: PropTypes.array.isRequired,
+    // movies: PropTypes.array.isRequired,
     handleCardClick: PropTypes.func.isRequired,
   };
   
