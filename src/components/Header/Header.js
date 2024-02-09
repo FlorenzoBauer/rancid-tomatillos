@@ -1,43 +1,55 @@
+import React, { useState } from 'react';
 import './Header.css';
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Header = ({ handleFilterChange, activeFilters }) => {
+    const [activeButtons, setActiveButtons] = useState([]);
+
+    const handleButtonClick = (filterType) => {
+        // Toggle the active state of the button
+        const updatedButtons = [...activeButtons];
+        const index = updatedButtons.indexOf(filterType);
+
+        if (index === -1) {
+            // Button not in the active list, add it
+            updatedButtons.push(filterType);
+        } else {
+            // Button already in the active list, remove it
+            updatedButtons.splice(index, 1);
+        }
+        setActiveButtons(updatedButtons);
+
+        // Determine whether to filter or unfilter based on the current active state
+        const isActive = updatedButtons.includes(filterType);
+        handleFilterChange(isActive ? updatedButtons : null);
+    };
+
     return (
         <header className="title">
             <h1>Rancid Tomatillos</h1>
             <div className="rating-filters">
-                <NavLink
-                    to="#"
-                    className="filter-button"
-                    activeClassName="active"
-                    onClick={() => handleFilterChange('low')}
-                    isActive={() => activeFilters.low}
+                <button
+                    className={`filter-button ${activeButtons.includes('low') ? 'active' : ''}`}
+                    onClick={() => handleButtonClick('low')}
                 >
                     Low Rated
-                </NavLink>
-                <NavLink
-                    to="#"
-                    className="filter-button"
-                    activeClassName="active"
-                    onClick={() => handleFilterChange('average')}
-                    isActive={() => activeFilters.average}
+                </button>
+                <button
+                    className={`filter-button ${activeButtons.includes('average') ? 'active' : ''}`}
+                    onClick={() => handleButtonClick('average')}
                 >
                     Average Rated
-                </NavLink>
-                <NavLink
-                    to="#"
-                    className="filter-button"
-                    activeClassName="active"
-                    onClick={() => handleFilterChange('high')}
-                    isActive={() => activeFilters.high}
+                </button>
+                <button
+                    className={`filter-button ${activeButtons.includes('high') ? 'active' : ''}`}
+                    onClick={() => handleButtonClick('high')}
                 >
                     High Rated
-                </NavLink>
+                </button>
             </div>
         </header>
     );
-}
+};
 
 Header.propTypes = {
     handleFilterChange: PropTypes.func.isRequired,

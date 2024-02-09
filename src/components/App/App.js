@@ -9,6 +9,7 @@ function App() {
     const [originalMovies, setOriginalMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [error, setError] = useState(null);
+    let filter;
     const [activeFilters, setActiveFilters] = useState({
         low: false,
         average: false,
@@ -21,6 +22,9 @@ function App() {
         fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
             .then(response => {
                 if (!response.ok) {
+                    if(response.status === 500) {
+                        throw new Error('Internal Server Error');
+                    }
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
@@ -36,12 +40,13 @@ function App() {
     }, []);
 
     const handleFilterChange = (selectedCategory) => {
+        filter = selectedCategory
         setActiveFilters(prevFilters => ({
             ...prevFilters,
             [selectedCategory]: !prevFilters[selectedCategory]
         }));
     };
-
+    
     useEffect(() => {
         const isMovieIncluded = (movie) => {
             const rating = movie.average_rating;
@@ -50,24 +55,21 @@ function App() {
             if (activeFilters.high && rating >= 7) return true;
             return false;
         };
-
+        
         const filteredMoviesList = activeFilters.low || activeFilters.average || activeFilters.high
-            ? originalMovies.filter(isMovieIncluded)
-            : originalMovies;
-
+        ? originalMovies.filter(isMovieIncluded)
+        : originalMovies;
+        
         setFilteredMovies(filteredMoviesList);
     }, [activeFilters, originalMovies]);
-
+    
     const handleCardClick = (id) => {
         navigate(`/${id}`);
     };
 
-    console.log(filteredMovies)
-
-
     return (
         <main>
-            <Header handleFilterChange={handleFilterChange} activeFilters={activeFilters} />
+            <Header handleFilterChange={handleFilterChange} activeFilters={activeFilters} filter={filter} />
             <Routes>
                 <Route path="/" element={<Movies movies={filteredMovies} handleCardClick={handleCardClick} error={error} />} />
                 <Route path="/:movieId" element={<MovieDetails />} />
