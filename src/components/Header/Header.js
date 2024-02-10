@@ -6,17 +6,14 @@ import { useLocation } from 'react-router-dom';
 const Header = ({ handleFilterChange, activeFilters }) => {
     const location = useLocation();
     const isMovieDetailPage = /\d+/.test(location.pathname);
-
-    
     const [activeButtons, setActiveButtons] = useState(Object.keys(activeFilters).filter(key => activeFilters[key]));
-
+    
     const handleButtonClick = (filterType) => {
-     
+
         const updatedButtons = [...activeButtons];
         const index = updatedButtons.indexOf(filterType);
 
         if (index === -1) {
-
             updatedButtons.push(filterType);
         } else {
             updatedButtons.splice(index,   1);

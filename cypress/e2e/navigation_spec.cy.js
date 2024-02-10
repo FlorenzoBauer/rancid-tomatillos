@@ -41,8 +41,7 @@ describe('navigation sad paths', () => {
   it('should display an error message when a user goes to an incorrect url', () => {
     cy.visit('http://localhost:3000/')
     cy.visit('http://localhost:3000/123456')
-    cy.contains('h1', 'Error Loading...')
+    cy.contains('h1', '404 - Page Not Found')
   });
-
 
 });

@@ -45,7 +45,7 @@ describe('Movie details view sadPath', () => {
   })
   it('should display an error message when a user clicks a movie card', () => {
     cy.get('[data-id="724495"]').click();
-    cy.contains('h1', 'Error Loading...')
+    cy.contains('h1', '404 - Page Not Found')
   });
 
 })
