@@ -9,6 +9,7 @@ Rotten Tomatillos is a website to browse and view information on movies! The use
 In order to get this site working, we used React, React Router, accessed data with Fetch API, and tested with Cypress.
 
 ### Preview of App:
+[Preview Here:](https://rushyyz.live/rancid-tomatillos)
 
 <img src="src/demoImage1.png" alt="Rotten Tomatillos - Movies Page" width="1000" height="auto">
 <img src="src/demoImage2.png" alt="Rotten Tomatillos - Movies Details Page" width="1000" height="auto">
