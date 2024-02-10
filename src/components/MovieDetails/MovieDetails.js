@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCalendarAlt, faStar, faFilm } from '@fortawesome/free-solid-svg-icons';
-
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [videos, setVideos] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,21 +22,29 @@ const MovieDetails = () => {
           fetch(videosUrl),
         ]);
 
+        if (!movieResponse.ok) {
+          throw new Error('Movie not found');
+        }
+
         const movieData = await movieResponse.json();
         const videosData = await videosResponse.json();
 
         setMovie(movieData.movie);
         setVideos(videosData.videos);
       } catch (error) {
-        console.log(error);
+        setError('Movie not found');
       }
     };
 
     fetchData();
   }, [movieId]);
 
+  if (error) {
+    return <NotFoundPage />;
+  }
 
-  if (!movie) return (<h1>Error Loading...</h1>);
+  if (!movie) return <div>Loading...</div>;
+
   return (
     <div className="movie-details-container">
       <div className="backdrop">
@@ -50,7 +59,7 @@ const MovieDetails = () => {
           <FontAwesomeIcon icon={faClock} /> <strong>Run Time:</strong> {movie.runtime} minutes
         </p>
         <p>
-          <FontAwesomeIcon icon={faCalendarAlt} /> <strong>Release Year:</strong> {movie.release_date.slice(0, 4)}
+          <FontAwesomeIcon icon={faCalendarAlt} /> <strong>Release Year:</strong> {movie.release_date.slice(0,  4)}
         </p>
         <p>
           <FontAwesomeIcon icon={faStar} /> <strong>Average Rating:</strong> {movie.average_rating}
@@ -60,7 +69,7 @@ const MovieDetails = () => {
         </p>
         <p><strong>Videos:</strong> </p>
         <div className="movie-videos">
-          {videos && videos.length > 0 && videos.map(video => (
+          {videos && videos.length >  0 && videos.map(video => (
             <div key={video.id}>
               <h3>{video.name}</h3>
               <iframe
@@ -75,7 +84,6 @@ const MovieDetails = () => {
         </div>
       </div>
     </div>
-
   );
 };
 
