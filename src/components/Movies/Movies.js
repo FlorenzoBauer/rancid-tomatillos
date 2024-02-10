@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './Movies.css';
 import Card from '../Card/Card';
 import { PropTypes } from 'prop-types';
@@ -24,7 +23,7 @@ const Movies = ({ movies, handleCardClick, error }) => {
 export default Movies;
 
 Movies.propTypes = {
-    // movies: PropTypes.array.isRequired,
+    movies: PropTypes.array.isRequired,
     handleCardClick: PropTypes.func.isRequired,
   };
   

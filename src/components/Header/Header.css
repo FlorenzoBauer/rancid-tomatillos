@@ -1,80 +1,76 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel:400,700&display=swap');
 
 body, h1 {
-    margin: 0;
-  }
+    margin:  0;
+}
 
-  
-  .title {
+.header-container {
     display: flex;
-    justify-content: center; 
+    justify-content: space-between;
     align-items: center;
     position: relative;
     background-color: black;
     color: white;
     text-align: center;
     font-family: 'Cinzel', sans-serif;
-    font-size: 2rem;
-    padding: 30px 30px;
-  }
-  
-  .homeButton {
-    position: absolute;
-    right: 20px;
-    background-color: #444;
-    color: white;
-    border: 2px solid #666;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin: 4px 2px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .homeButton:hover {
-    background-color: #666; 
-    color: #ffffff;
-  }
-  
-  .rating-filters {
+    font-size:  2rem;
+    padding:  30px  30px;
+}
+
+.title {
     display: flex;
-    gap: 10px;
-    width:  100%;
-    max-width:  300px;
-    margin-top:  10px;
-  }
-  
-  .filter-button {
-    position: relative;
-    top:15px;
-    left: 50%;
-    padding-left: 15px;
-    width: 100px;
-    background-color: #f0f0f0;
+    justify-content: center;
+    align-items: center;
+    flex-grow:  1;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow:  1;
+}
+
+.back-to-movies, .filter-button {
+    width:  100px;
+    background-color: #f0f0f0f0;
     border: none;
     border-radius:  5px;
     padding:  5px  10px;
     cursor: pointer;
     outline: none;
-    transition: background-color  0.3s ease;
-  }
-  
-  .filter-button:hover {
-    color:rgb(126, 2, 2);
-  }
-  
-  .active{
-    width: 100px;
-    font-size: 15px;
-    background-color: rgb(100, 101, 100);
-    color:black;
+    transition: background-color  0.3s ease, color  0.3s ease;
+}
+
+.back-to-movies:hover, .filter-button:hover {
+    color: rgb(126,  2,  2);
+}
+
+.filter-button.active, .back-to-movies.active {
+    background-color: #007BFF;
+    color: white;
     border: none;
-    border-radius:  px;
-    padding:  5px  10px;
-    cursor: pointer;
-    outline: none;
-  }
+}
+
+.rating-filters {
+    display: flex;
+    gap:  10px;
+    width:  100%;
+    max-width:  300px;
+    margin-top:  10px;
+}
+
+@media screen and (max-width:  600px) {
+    .header-container {
+        flex-direction: column;
+        padding:  10px;
+    }
+    .button-container {
+        justify-content: center;
+        margin-top:  10px;
+    }
+    .title {
+        margin-bottom:  10px;
+    }
+}

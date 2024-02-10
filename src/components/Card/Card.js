@@ -10,17 +10,13 @@ const Card = ({ id, poster_path, title, handleCardClick }) => {
     );
 };
 
-export default Card;
-
-// Card.defaultProps = {
-//     id:  0,
-//     poster_path: 'default-poster-path.jpg',
-//     title: 'Loading...',
-// };
-
 Card.propTypes = {
     id: PropTypes.number.isRequired,
     poster_path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     handleCardClick: PropTypes.func.isRequired,
   };
+  
+export default Card;
+
+
