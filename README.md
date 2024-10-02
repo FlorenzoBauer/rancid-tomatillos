@@ -1,5 +1,6 @@
 <h1 align="center"> Rancid Tomatillos </h1>
 <a name="readme-top"></a>
+
 ### Abstract:
 
 Rancid Tomatillos is a website that browses and views information on movies! The user can scroll through a list of movies, filter by rating, and click on a specific film to view more details.
