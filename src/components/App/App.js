@@ -76,9 +76,9 @@ function App() {
             <Header handleFilterChange={handleFilterChange} activeFilters={activeFilters} filter={filter} />
             {error && <div className="error-message">{error}</div>}
             <Routes>
-                <Route path="/" element={<Movies movies={filteredMovies} handleCardClick={handleCardClick} error={error} />} />
+                <Route path="/rancid-tomatillos/" element={<Movies movies={filteredMovies} handleCardClick={handleCardClick} error={error} />} />
                 <Route path="/:movieId" element={<MovieDetails />} />
-                <Route path="*" element={<NotFoundPage />} />
+                <Route path="/*" element={<NotFoundPage />} />
             </Routes>
         </main>
     );
