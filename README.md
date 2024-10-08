@@ -1,19 +1,18 @@
 <h1 align="center"> Rancid Tomatillos </h1>
 <a name="readme-top"></a>
 
-### Abstract:
+### About:
 
-Rancid Tomatillos is a website that browses and views information on movies! The user can scroll through a list of movies, filter by rating, and click on a specific film to view more details.
+Rancid Tomatillos is a website that browses and views information on movies! The user can scroll through a list of movies, filter by rating, and click on a specific film to view more details. This shows new and older movies, it provides a way to find new movies to watch along with accompanying trailers and reviews to help find the best match for you!
 
 ### Technologies Used
 
 [![JavaScript][JavaScript]][JavaScript-url] [![React][React]][React-url] [![React Router][React Router]][React Router-url]  [![GitHub Actions][GitHub Actions]][GitHub Actions-url]
 
 ### Preview of App:
-[Preview Here:](https://rushyyz.live/rancid-tomatillos)
+[Visit here:](https://rushyyz.live/rancid-tomatillos)
 
-<img src="src/demoImage1.png" alt="Rotten Tomatillos - Movies Page" width="1000" height="auto">
-<img src="src/demoImage2.png" alt="Rotten Tomatillos - Movies Details Page" width="1000" height="auto">
+<img src="src/preview.gif" alt="Rotten Tomatillos - Movies Page" width="1000" height="auto">
 
 
 ### Contributors:
@@ -22,11 +21,19 @@ Rancid Tomatillos is a website that browses and views information on movies! The
 - Jamie Francisco: [![GitHub 2][GitHub 2]][GitHub 2-url] 
 
 ### Installation
+Reqs: Node, NPM:
 
+Download the repository from GitHub. Fork and Clone it. Then in the terminal hit 
 ```
 npm install
 ```
+```
+npm start
+```
+  <p> This should load the website in your browser and you should be fully installed. </p>
+
 ---
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
