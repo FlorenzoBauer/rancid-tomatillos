@@ -10,7 +10,6 @@ function App() {
     const [originalMovies, setOriginalMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [error, setError] = useState(null);
-    const [filter, setFilter] = useState(null); // <-- changed filter to state
     const [activeFilters, setActiveFilters] = useState({
         low: false,
         average: false,
@@ -20,11 +19,14 @@ function App() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://c08f-2601-283-4f02-1db0-7c9f-ed26-e7d9-264d.ngrok-free.app/movies')
+        fetch(`https://rancid-tomatillos-server-544508eefb00.herokuapp.com/movies`)
             .then(response => {
                 if (!response.ok) {
                     if (response.status === 500) {
                         throw new Error('Internal Server Error');
+                    }
+                    if (response.status === 304 || response.status === 404) {
+                        throw new Error('Not Found');
                     }
                     throw new Error('Network response was not ok');
                 }
@@ -75,9 +77,13 @@ function App() {
         navigate(`/${id}`);
     };
 
+    console.log('Original Movies:', originalMovies);
+    console.log('Filtered Movies:', filteredMovies);
+    console.log('Active Filters:', activeFilters);
+
     return (
         <main>
-            <Header handleFilterChange={handleFilterChange} activeFilters={activeFilters} filter={filter} />
+            <Header handleFilterChange={handleFilterChange} activeFilters={activeFilters} />
             {error && <div className="error-message">{error}</div>}
             <Routes>
                 <Route path="/rancid-tomatillos/" element={<Movies movies={filteredMovies} handleCardClick={handleCardClick} error={error} />} />

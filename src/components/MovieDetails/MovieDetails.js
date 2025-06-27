@@ -13,7 +13,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const movieUrl = `https://c08f-2601-283-4f02-1db0-7c9f-ed26-e7d9-264d.ngrok-free.app/movies/${movie.Id}`; // Change this to the correct URL if needed
+        const movieUrl = `https://rancid-tomatillos-server-544508eefb00.herokuapp.com/movies/${movieId}`; // Change this to the correct URL if needed
         
 
         const [movieResponse] = await Promise.all([
