@@ -20,7 +20,7 @@ function App() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://e299-2601-283-4f02-1db0-7c9f-ed26-e7d9-264d.ngrok-free.app/movies')
+        fetch('https://c08f-2601-283-4f02-1db0-7c9f-ed26-e7d9-264d.ngrok-free.app/movies')
             .then(response => {
                 if (!response.ok) {
                     if (response.status === 500) {
