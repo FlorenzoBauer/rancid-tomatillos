@@ -13,7 +13,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const movieUrl = `http://localhost:3000/movies/${movieId}`; // Change this to the correct URL if needed
+        const movieUrl = `https://e299-2601-283-4f02-1db0-7c9f-ed26-e7d9-264d.ngrok-free.app/movies/${movieId}`; // Change this to the correct URL if needed
         
 
         const [movieResponse] = await Promise.all([
