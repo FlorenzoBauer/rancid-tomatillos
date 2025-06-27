@@ -8,18 +8,16 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [videos, setVideos] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const movieUrl = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`;
-        const videosUrl = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`;
+        const movieUrl = `http://localhost:3000/movies/${movieId}`; // Change this to the correct URL if needed
+        
 
-        const [movieResponse, videosResponse] = await Promise.all([
+        const [movieResponse] = await Promise.all([
           fetch(movieUrl),
-          fetch(videosUrl),
         ]);
 
         if (!movieResponse.ok) {
@@ -27,10 +25,8 @@ const MovieDetails = () => {
         }
 
         const movieData = await movieResponse.json();
-        const videosData = await videosResponse.json();
 
-        setMovie(movieData.movie);
-        setVideos(videosData.videos);
+        setMovie(movieData);
       } catch (error) {
         setError('Movie not found');
       }
@@ -38,7 +34,7 @@ const MovieDetails = () => {
 
     fetchData();
   }, [movieId]);
-
+console.log('Movie Details:', movie); // Debug log to check movie data
   if (error) {
     return <NotFoundPage />;
   }
@@ -53,7 +49,7 @@ const MovieDetails = () => {
       <div className="individual-movie">
         <h2>{movie.title}</h2>
         <p>
-          <FontAwesomeIcon icon={faFilm} /> <strong>Genres:</strong> {movie.genres.join(', ')}
+          <FontAwesomeIcon icon={faFilm} /> <strong>Genres:</strong> {movie.genre}
         </p>
         <p>
           <FontAwesomeIcon icon={faClock} /> <strong>Run Time:</strong> {movie.runtime} minutes
@@ -67,21 +63,6 @@ const MovieDetails = () => {
         <p>
           <strong>Overview:</strong> <br></br>{movie.overview}
         </p>
-        <p><strong>Videos:</strong> </p>
-        <div className="movie-videos">
-          {videos && videos.length >  0 && videos.map(video => (
-            <div key={video.id}>
-              <h3>{video.name}</h3>
-              <iframe
-                src={`https://www.youtube.com/embed/${video.key}`}
-                title={video.name}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

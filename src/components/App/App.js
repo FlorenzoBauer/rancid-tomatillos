@@ -10,7 +10,7 @@ function App() {
     const [originalMovies, setOriginalMovies] = useState([]);
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [error, setError] = useState(null);
-    let filter;
+    const [filter, setFilter] = useState(null); // <-- changed filter to state
     const [activeFilters, setActiveFilters] = useState({
         low: false,
         average: false,
@@ -20,10 +20,10 @@ function App() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+        fetch('http://localhost:3000/movies')
             .then(response => {
                 if (!response.ok) {
-                    if (response.status ===  500) {
+                    if (response.status === 500) {
                         throw new Error('Internal Server Error');
                     }
                     throw new Error('Network response was not ok');
@@ -31,42 +31,46 @@ function App() {
                 return response.json();
             })
             .then(data => {
-                setOriginalMovies(data.movies);
-                setFilteredMovies(data.movies);
+                console.log('API response data:', data); 
+                if (!data || !Array.isArray(data)) {
+                    throw new Error('Movies data is missing or invalid');
+                }
+                setOriginalMovies(data);
+                setFilteredMovies(data);
             })
             .catch(error => {
                 console.error('Error:', error);
-                setError('Error fetching data from the API');
                 if (error.message === 'Internal Server Error') {
                     setError('Internal Server Error: The server encountered an unexpected condition which prevented it from fulfilling the request.');
+                } else {
+                    setError('Error fetching data from the API');
                 }
             });
     }, []);
 
     const handleFilterChange = (selectedCategory) => {
-        filter = selectedCategory;
         setActiveFilters(prevFilters => ({
             ...prevFilters,
             [selectedCategory]: !prevFilters[selectedCategory]
         }));
     };
-    
+
     useEffect(() => {
         const isMovieIncluded = (movie) => {
             const rating = movie.average_rating;
-            if (activeFilters.low && rating <=  4) return true;
-            if (activeFilters.average && rating >  4 && rating <  7) return true;
-            if (activeFilters.high && rating >=  7) return true;
+            if (activeFilters.low && rating <= 4) return true;
+            if (activeFilters.average && rating > 4 && rating < 7) return true;
+            if (activeFilters.high && rating >= 7) return true;
             return false;
         };
-        
+
         const filteredMoviesList = activeFilters.low || activeFilters.average || activeFilters.high
-        ? originalMovies.filter(isMovieIncluded)
-        : originalMovies;
-        
+            ? originalMovies.filter(isMovieIncluded)
+            : originalMovies;
+
         setFilteredMovies(filteredMoviesList);
     }, [activeFilters, originalMovies]);
-    
+
     const handleCardClick = (id) => {
         navigate(`/${id}`);
     };
